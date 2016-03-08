@@ -37,8 +37,8 @@ import java.util.regex.Pattern;
 
 /**
  * These are some utilities to be used on the Rapid project.
+ * In particular, some important functions are used by the AS and AC.  
  * @author sokol
- *
  */
 public class RapidUtils {
 
