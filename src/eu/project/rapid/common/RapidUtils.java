@@ -21,10 +21,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,11 +31,15 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.regex.Pattern;
 
+/**
+ * These are some utilities to be used on the Rapid project.
+ * @author sokol
+ *
+ */
 public class RapidUtils {
 
 	private static final String TAG = "RapidUtils";
@@ -48,6 +48,8 @@ public class RapidUtils {
 					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
 					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
 					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+	
+	private static boolean demoAnimate = false;
 
 	private static final Thread demoServerThread;
 	private static BlockingQueue<String> commandQueue = new ArrayBlockingQueue<String>(1000);
@@ -183,17 +185,19 @@ public class RapidUtils {
 	 */
 	public static synchronized void sendAnimationMsg(final String ip, final int port,
 			final String msg) {
+		
+		if (demoAnimate) {
+			RapidUtils.demoServerIp = ip;
+			RapidUtils.demoServerPort = port;
 
-		RapidUtils.demoServerIp = ip;
-		RapidUtils.demoServerPort = port;
-
-		boolean added = false;
-		while (!added) {
-			try {
-				commandQueue.put(msg);
-				added = true;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			boolean added = false;
+			while (!added) {
+				try {
+					commandQueue.put(msg);
+					added = true;
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
