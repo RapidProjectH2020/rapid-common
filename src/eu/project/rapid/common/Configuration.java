@@ -49,7 +49,7 @@ public class Configuration {
   private int animationServerPort = 6666;
   private String dsIp;
   private int dsPort = 4319;
-  private String managerIp;
+  private String managerIp = "127.0.0.1";
   private int managerPort = 4320;
   private SETUP_TYPE setupType; // Local, Amazon, Hybrid
   private int nrClonesKVMToStartOnStartup = 0;
