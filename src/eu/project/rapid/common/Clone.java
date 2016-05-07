@@ -1,26 +1,22 @@
 /*******************************************************************************
  * Copyright (C) 2015, 2016 RAPID EU Project
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it under the terms of the
+ * GNU Lesser General Public License as published by the Free Software Foundation; either version
+ * 2.1 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * You should have received a copy of the GNU Lesser General Public License along with this library;
+ * if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA
  *******************************************************************************/
 package eu.project.rapid.common;
 
 import java.io.Serializable;
 import java.security.PublicKey;
-
-import eu.project.rapid.common.RapidUtils;
 
 /**
  * The clone object
@@ -35,12 +31,12 @@ public class Clone implements Serializable {
                        // start/pause/stop the clones
   private String ip;
   private CloneState status;
+  private int clonePortBandwidthTest = 4321;
   private int port = Configuration.DEFAULT_CLONE_PORT;
   private int sslPort = Configuration.DEFAULT_SSL_CLONE_PORT;
   private CloneType type;
   private PublicKey publicKey;
   private boolean cryptoPossible = false;
-
 
   /**
    * Empty clone to be sent to the phone when no clone is available.
@@ -180,6 +176,20 @@ public class Clone implements Serializable {
    */
   public void setSslPort(int sslPort) {
     this.sslPort = sslPort;
+  }
+
+  /**
+   * @return the clonePortBandwidthTest
+   */
+  public int getClonePortBandwidthTest() {
+    return clonePortBandwidthTest;
+  }
+
+  /**
+   * @param clonePortBandwidthTest the clonePortBandwidthTest to set
+   */
+  public void setClonePortBandwidthTest(int clonePortBandwidthTest) {
+    this.clonePortBandwidthTest = clonePortBandwidthTest;
   }
 
   /**
@@ -347,8 +357,8 @@ public class Clone implements Serializable {
    */
   public boolean startVBClone() {
 
-    String out =
-        RapidUtils.executeCommand("/usr/local/bin/VBoxManage startvm " + this.name + " --type headless");
+    String out = RapidUtils
+        .executeCommand("/usr/local/bin/VBoxManage startvm " + this.name + " --type headless");
 
     if (out.contains("has been successfully started.")) {
       return true;

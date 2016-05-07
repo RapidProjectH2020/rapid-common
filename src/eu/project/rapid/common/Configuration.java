@@ -1,19 +1,17 @@
 /*******************************************************************************
  * Copyright (C) 2015, 2016 RAPID EU Project
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it under the terms of the
+ * GNU Lesser General Public License as published by the Free Software Foundation; either version
+ * 2.1 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * You should have received a copy of the GNU Lesser General Public License along with this library;
+ * if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA
  *******************************************************************************/
 package eu.project.rapid.common;
 
@@ -30,12 +28,13 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
-import eu.project.rapid.common.RapidConstants;
 import eu.project.rapid.common.RapidConstants.SETUP_TYPE;
 
 
 /**
- * Configuration class used to read the config file and keep the parameters.
+ * Configuration class used to read the config file and keep the parameters.<br>
+ * This class is used only by the Android project, since the Linux version uses the Java Properties
+ * configuration format.
  *
  */
 public class Configuration {
@@ -56,7 +55,6 @@ public class Configuration {
   private int nrClonesVBToStartOnStartup = 0;
   private int nrClonesAmazonToStartOnStartup = 0;
   private Clone clone;
-  private int clonePortBandwidthTest = 4321;
   private int clonePort = DEFAULT_CLONE_PORT;
   private String cloneName;
   private int cloneId;
@@ -377,20 +375,6 @@ public class Configuration {
    */
   public void setClone(Clone clone) {
     this.clone = clone;
-  }
-
-  /**
-   * @return the clonePortBandwidthTest
-   */
-  public int getClonePortBandwidthTest() {
-    return clonePortBandwidthTest;
-  }
-
-  /**
-   * @param clonePortBandwidthTest the clonePortBandwidthTest to set
-   */
-  public void setClonePortBandwidthTest(int clonePortBandwidthTest) {
-    this.clonePortBandwidthTest = clonePortBandwidthTest;
   }
 
   /**
