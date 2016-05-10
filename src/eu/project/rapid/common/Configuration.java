@@ -68,6 +68,10 @@ public class Configuration {
   private KeyManagerFactory kmf;
   private SSLContext sslContext;
   private SSLSocketFactory sslFactory;
+  private int clonePortBandwidthTest = 4321;
+
+  private String gvirtusIp;
+  private int gvirtusPort;
 
   public Configuration() {}
 
@@ -190,6 +194,14 @@ public class Configuration {
 
         else if (line.equals(RapidConstants.CLONE_ID)) {
           this.cloneId = configFileScanner.nextInt();
+        }
+
+        else if (line.equals(RapidConstants.GVIRTUS_IP)) {
+          this.gvirtusIp = configFileScanner.nextLine();
+        }
+
+        else if (line.equals(RapidConstants.GVIRTUS_PORT)) {
+          this.gvirtusPort = configFileScanner.nextInt();
         }
 
         // Now there will be a list of clone names that can be used for starting the clones on VB
@@ -517,6 +529,48 @@ public class Configuration {
    */
   public void setCommType(int commType) {
     this.commType = commType;
+  }
+
+  /**
+   * @return the clonePortBandwidthTest
+   */
+  public int getClonePortBandwidthTest() {
+    return clonePortBandwidthTest;
+  }
+
+  /**
+   * @param clonePortBandwidthTest the clonePortBandwidthTest to set
+   */
+  public void setClonePortBandwidthTest(int clonePortBandwidthTest) {
+    this.clonePortBandwidthTest = clonePortBandwidthTest;
+  }
+
+  /**
+   * @return the gvirtusIp
+   */
+  public String getGvirtusIp() {
+    return gvirtusIp;
+  }
+
+  /**
+   * @param gvirtusIp the gvirtusIp to set
+   */
+  public void setGvirtusIp(String gvirtusIp) {
+    this.gvirtusIp = gvirtusIp;
+  }
+
+  /**
+   * @return the gvirtusPort
+   */
+  public int getGvirtusPort() {
+    return gvirtusPort;
+  }
+
+  /**
+   * @param gvirtusPort the gvirtusPort to set
+   */
+  public void setGvirtusPort(int gvirtusPort) {
+    this.gvirtusPort = gvirtusPort;
   }
 
   public void printConfigFile() {

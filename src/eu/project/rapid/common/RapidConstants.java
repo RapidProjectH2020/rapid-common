@@ -43,6 +43,8 @@ public class RapidConstants {
   public static final String DEMO_SERVER_PORT = "[DEMO SERVER PORT]";
   public static final String DS_IP = "[DS IP]";
   public static final String DS_PORT = "[DS PORT]";
+  public static final String GVIRTUS_IP = "[GVIRTUS IP]";
+  public static final String GVIRTUS_PORT = "[GVIRTUS PORT]";
   public static final String MANAGER_IP = "[MANAGER IP]";
   public static final String MANAGER_PORT = "[MANAGER PORT]";
   public static final String CLONE_TYPES = "[CLONE TYPES]"; // Type has to be one of: Local, Amazon,
