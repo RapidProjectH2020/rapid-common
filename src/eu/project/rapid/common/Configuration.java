@@ -70,7 +70,7 @@ public class Configuration {
   private SSLSocketFactory sslFactory;
   private int clonePortBandwidthTest = 4321;
 
-  private String gvirtusIp = "storm.uniparthenope.it";
+  private String gvirtusIp;// = "storm.uniparthenope.it";
   private int gvirtusPort = 9992;
 
   public Configuration() {}

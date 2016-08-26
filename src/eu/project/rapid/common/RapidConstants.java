@@ -66,7 +66,7 @@ public class RapidConstants {
   public static final String DS_CONFIG_FILE = "config-ds.cfg";
 
   public static enum ExecLocation {
-    LOCAL, REMOTE, HYBRID
+    LOCAL, REMOTE, DYNAMIC
   }
 
   public static enum REGIME {
