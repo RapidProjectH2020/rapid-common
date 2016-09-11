@@ -49,44 +49,38 @@ public class RapidMessages {
 	public static final int PHONE_AUTHENTICATION = 33;
 	public static final int AC_REGISTER_NEW_DS = 34;
 	public static final int AC_REGISTER_PREV_DS = 35;
-	public static final int AS_RM_REGISTER_DS = 36;
-	public static final int AS_RM_REGISTER_SLAM = 37;
-	public static final int CLONE_AUTHENTICATION = 38;
-	public static final int MANAGER_AUTHENTICATION = 39;
-	public static final int GET_ASSOCIATED_CLONE_INFO = 40;
-	public static final int GET_NEW_CLONE_INFO = 41;
-	public static final int GET_PORT = 42;
-	public static final int GET_SSL_PORT = 43;
-	public static final int DOWNLOAD_FILE = 44;
-	public static final int UPLOAD_FILE = 45;
-	public static final int UPLOAD_FILE_RESULT = 46;
-	public static final int DATA_RATE_THROTTLE = 47;
-	public static final int DATA_RATE_UNTHROTTLE = 48;
-	public static final int FORWARD_REQ = 49;
-	public static final int FORWARD_START = 50;
-	public static final int FORWARD_END = 51;
-	public static final int PARALLEL_REQ = 52;
-	public static final int PARALLEL_START = 53;
-	public static final int PARALLEL_END = 54;
-
-	// Communication Phone <-> SLAM
-	public static final int AC_REGISTER_SLAM = 60;
+	public static final int AC_REGISTER_SLAM = 36;
+	public static final int AS_RM_REGISTER_DS = 37;
+	public static final int AS_RM_REGISTER_VMM = 38;
+	public static final int AS_RM_NOTIFY_VMM = 39;
+	public static final int CLONE_AUTHENTICATION = 40;
+	public static final int MANAGER_AUTHENTICATION = 41;
+	public static final int GET_ASSOCIATED_CLONE_INFO = 42;
+	public static final int GET_NEW_CLONE_INFO = 43;
+	public static final int GET_PORT = 44;
+	public static final int GET_SSL_PORT = 45;
+	public static final int DOWNLOAD_FILE = 46;
+	public static final int UPLOAD_FILE = 47;
+	public static final int UPLOAD_FILE_RESULT = 48;
+	public static final int DATA_RATE_THROTTLE = 49;
+	public static final int DATA_RATE_UNTHROTTLE = 50;
+	public static final int FORWARD_REQ = 51;
+	public static final int FORWARD_START = 52;
+	public static final int FORWARD_END = 53;
+	public static final int PARALLEL_REQ = 54;
+	public static final int PARALLEL_START = 55;
+	public static final int PARALLEL_END = 56;
 
 	// Communication SLAM <-> VMM
-	public static final int SLAM_START_VM_VMM = 70;
-	public static final int SLAM_QUERY_IP_VMM = 71;
+	public static final int SLAM_START_VM_VMM = 60;
 
 	// Communication DS <-> VMM
-	public static final int VMM_REGISTER_DS = 80;
-	public static final int VMM_NOTIFY_DS = 81;
-	public static final int VM_REGISTER_DS = 82;
-	public static final int VM_NOTIFY_DS = 83;
-	public static final int HELPER_NOTIFY_DS = 84;
-	public static final int DS_VM_DEREGISTER_VMM = 85;
-
-	// Communication Phone/Clone <-> VMM
-	public static final int AS_RM_REGISTER_VMM = 90;
-	public static final int AS_RM_NOTIFY_VMM = 91;
+	public static final int VMM_REGISTER_DS = 70;
+	public static final int VMM_NOTIFY_DS = 71;
+	public static final int VM_REGISTER_DS = 72;
+	public static final int VM_NOTIFY_DS = 73;
+	public static final int HELPER_NOTIFY_DS = 74;
+	public static final int DS_VM_DEREGISTER_VMM = 75;
 	
 	// Communication Phone <-> Registration Manager
 	public static final int AC_HELLO_AC_RM = 1;
