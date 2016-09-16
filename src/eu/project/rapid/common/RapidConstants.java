@@ -55,7 +55,10 @@ public class RapidConstants {
   public static final String GVIRTUS_PORT = "[GVIRTUS PORT]";
   public static final String MANAGER_IP = "[MANAGER IP]";
   public static final String MANAGER_PORT = "[MANAGER PORT]";
-  public static final String CLONE_TYPES = "[CLONE TYPES]"; // Type has to be one of: Local, Amazon,
+  public static final String CLONE_TYPES = "[CLONE TYPES]"; // Type has to be
+                                                            // one of:
+                                                            // Local,
+                                                            // Amazon,
                                                             // or Hybrid
   public static final String NR_CLONES_KVM_TO_START = "[NUMBER OF KVM CLONES TO START ON STARTUP]";
   public static final String NR_CLONES_VB_TO_START = "[NUMBER OF VB CLONES TO START ON STARTUP]";
@@ -79,5 +82,10 @@ public class RapidConstants {
 
   public static enum REGIME {
     AC, AS
+  }
+
+  // supported OS in the cloud
+  public static enum OS {
+    LINUX, ANDROID
   }
 }
