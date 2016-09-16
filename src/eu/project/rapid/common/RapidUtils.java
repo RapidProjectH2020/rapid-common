@@ -29,8 +29,12 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.regex.Pattern;
@@ -267,14 +271,10 @@ public class RapidUtils {
 			System.err.println("Could not connect to animation server: " + demoServerIp + ":"
 					+ demoServerPort + ": " + e);
 		} finally {
-			if (pout != null)
+			if (pout != null) {
 				pout.close();
-			if (socket != null) {
-				try {
-					socket.close();
-				} catch (IOException e) {
-				}
 			}
+			closeQuietly(socket);
 		}
 	}
 
@@ -286,5 +286,34 @@ public class RapidUtils {
 	public static boolean validateIpAddress(final String ip){
 		Pattern pattern = Pattern.compile(IPADDRESS_PATTERN);
 		return pattern.matcher(ip).matches();	    	    
+	}
+	
+	public static String getVmIpLinux() {
+		String localIpAddress = "";
+		Enumeration<NetworkInterface> e;
+		try {
+			e = NetworkInterface.getNetworkInterfaces();
+			while (e.hasMoreElements()) {
+				NetworkInterface n = (NetworkInterface) e.nextElement();
+				Enumeration<InetAddress> ee = n.getInetAddresses();
+
+				boolean stop = false;
+				while (ee.hasMoreElements()) {
+					InetAddress i = (InetAddress) ee.nextElement();
+					if (i.getHostAddress().startsWith("10.0.")) {
+						localIpAddress = i.getHostAddress();
+						stop = true;
+						break;
+					}
+				}
+				if (stop)
+					break;
+			}
+		} catch (SocketException e1) {
+			System.err.println("Error while getting VM IP: " + e1);
+		}
+		
+		return localIpAddress;
+
 	}
 }

@@ -28,8 +28,6 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 
-import eu.project.rapid.common.RapidConstants.SETUP_TYPE;
-
 
 /**
  * Configuration class used to read the config file and keep the parameters.<br>
@@ -39,39 +37,34 @@ import eu.project.rapid.common.RapidConstants.SETUP_TYPE;
  */
 public class Configuration {
 
-  public static final int DEFAULT_CLONE_PORT = 4322;
-  public static final int DEFAULT_SSL_CLONE_PORT = 5322;
-
   private Scanner configFileScanner;
 
   private String animationServerIp;
-  private int animationServerPort = 6666;
+  private int animationServerPort = RapidConstants.DEFAULT_ANIMATION_SERVER_PORT;
   private String dsIp;
-  private int dsPort = 4319;
-  private String managerIp = "127.0.0.1";
-  private int managerPort = 4320;
-  private SETUP_TYPE setupType; // Local, Amazon, Hybrid
-  private int nrClonesKVMToStartOnStartup = 0;
-  private int nrClonesVBToStartOnStartup = 0;
-  private int nrClonesAmazonToStartOnStartup = 0;
+  private int dsPort = RapidConstants.DEFAULT_DS_PORT;
+  private String slamIp;
+  private int slamPort = RapidConstants.DEFAULT_SLAM_PORT;
+  private String vmmIp = "127.0.0.1";
+  private int vmmPort = RapidConstants.DEFAULT_VMM_PORT;
   private Clone clone;
-  private int clonePort = DEFAULT_CLONE_PORT;
+  private int clonePort = RapidConstants.DEFAULT_VM_PORT;
   private String cloneName;
   private int cloneId;
   private int commType;
 
   // SSL related configuration parameters
-  private int sslClonePort = DEFAULT_SSL_CLONE_PORT;
+  private int sslClonePort = RapidConstants.DEFAULT_VM_PORT_SSL;
   private boolean cryptoInitialized = false;
   private PublicKey publicKey;
   private PrivateKey privateKey;
   private KeyManagerFactory kmf;
   private SSLContext sslContext;
   private SSLSocketFactory sslFactory;
-  private int clonePortBandwidthTest = 4321;
+  private int clonePortBandwidthTest = RapidConstants.DEFAULT_BANDWIDTH_PORT;
 
   private String gvirtusIp;// = "storm.uniparthenope.it";
-  private int gvirtusPort = 9992;
+  private int gvirtusPort = RapidConstants.DEFAULT_GVIRTUS_PORT;
 
   public Configuration() {}
 
@@ -126,11 +119,11 @@ public class Configuration {
         }
 
         else if (line.equals(RapidConstants.MANAGER_IP)) {
-          this.managerIp = configFileScanner.nextLine().trim();
+          this.vmmIp = configFileScanner.nextLine().trim();
         }
 
         else if (line.equals(RapidConstants.MANAGER_PORT)) {
-          this.managerPort = configFileScanner.nextInt();
+          this.vmmPort = configFileScanner.nextInt();
         }
 
         else if (line.equals(RapidConstants.DEMO_SERVER_IP)) {
@@ -139,43 +132,6 @@ public class Configuration {
 
         else if (line.equals(RapidConstants.DEMO_SERVER_PORT)) {
           this.animationServerPort = configFileScanner.nextInt();
-        }
-
-        // If this is the type of the C2C platform to create.
-        // Expected one of the alternatives: Local, Amazon, or Hybrid.
-        // For the moment this implementation does not support Hybrid configuration in automatic
-        // way.
-        else if (line.equals(RapidConstants.CLONE_TYPES)) {
-          String temp = configFileScanner.nextLine().trim();
-          if (temp.equalsIgnoreCase("Virtualbox"))
-            setSetupType(RapidConstants.SETUP_TYPE.VIRTUALBOX);
-          else if (temp.equalsIgnoreCase("KVM"))
-            setSetupType(RapidConstants.SETUP_TYPE.KVM);
-          else if (temp.equalsIgnoreCase("Amazon"))
-            setSetupType(RapidConstants.SETUP_TYPE.AMAZON);
-          else if (temp.equalsIgnoreCase("Hybrid"))
-            setSetupType(RapidConstants.SETUP_TYPE.HYBRID);
-          else {
-            System.err.println("Configuration error: " + temp);
-          }
-        }
-
-        // If this is the line containing the number of KVM clones to start in this phase.
-        // Next line should be a number indicating the number of clones.
-        else if (line.equals(RapidConstants.NR_CLONES_KVM_TO_START)) {
-          this.nrClonesKVMToStartOnStartup = configFileScanner.nextInt();
-        }
-
-        // If this is the line containing the number of VB clones to start in this phase.
-        // Next line should be a number indicating the number of clones.
-        else if (line.equals(RapidConstants.NR_CLONES_VB_TO_START)) {
-          this.nrClonesVBToStartOnStartup = configFileScanner.nextInt();
-        }
-
-        // If this is the line containing the number of Amazon clones to start in this phase.
-        // Next line should be a number indicating the number of clones.
-        else if (line.equals(RapidConstants.NR_CLONES_AMAZON_TO_START)) {
-          this.nrClonesAmazonToStartOnStartup = configFileScanner.nextInt();
         }
 
         // This is the port where the clones will listen for phone connections
@@ -294,85 +250,26 @@ public class Configuration {
     this.dsPort = dsPort;
   }
 
-  public String getManagerIp() {
-    return managerIp;
+  public String getVMMIp() {
+    return vmmIp;
   }
 
-  public void setManagerIp(String managerIp) {
-    this.managerIp = managerIp;
+  public void setVMMIp(String vmmIp) {
+    this.vmmIp = vmmIp;
   }
 
   /**
    * @return the port
    */
-  public int getManagerPort() {
-    return managerPort;
+  public int getVMMPort() {
+    return vmmPort;
   }
 
   /**
    * @param port the port to set
    */
-  public void setManagerPort(int port) {
-    this.managerPort = port;
-  }
-
-  /**
-   * @return the setupType
-   */
-  public SETUP_TYPE getSetupType() {
-    return setupType;
-  }
-
-  /**
-   * @param type The setup type to set: Local, Amazon, Hybrid
-   */
-  public void setSetupType(SETUP_TYPE type) {
-
-    System.out.println("Setting the type to: " + type);
-
-    this.setupType = type;
-  }
-
-  /**
-   * @return the nrClonesKVMToStartOnStartup
-   */
-  public int getNrClonesKVMToStartOnStartup() {
-    return nrClonesKVMToStartOnStartup;
-  }
-
-  /**
-   * @param nrClonesKVMToStartOnStartup the nrClonesKVMToStartOnStartup to set
-   */
-  public void setNrClonesKVMToStartOnStartup(int nrClonesKVMToStartOnStartup) {
-    this.nrClonesKVMToStartOnStartup = nrClonesKVMToStartOnStartup;
-  }
-
-  /**
-   * @return the nrClonesVBToStartOnStartup
-   */
-  public int getNrClonesVBToStartOnStartup() {
-    return nrClonesVBToStartOnStartup;
-  }
-
-  /**
-   * @param nrClonesVBToStartOnStartup the nrClonesVBToStartOnStartup to set
-   */
-  public void setNrClonesVBToStartOnStartup(int nrClonesVBToStartOnStartup) {
-    this.nrClonesVBToStartOnStartup = nrClonesVBToStartOnStartup;
-  }
-
-  /**
-   * @return the nrClonesAmazonToStartOnStartup
-   */
-  public int getNrClonesAmazonToStartOnStartup() {
-    return nrClonesAmazonToStartOnStartup;
-  }
-
-  /**
-   * @param nrClonesAmazonToStartOnStartup the nrClonesAmazonToStartOnStartup to set
-   */
-  public void setNrClonesAmazonToStartOnStartup(int nrClonesAmazonToStartOnStartup) {
-    this.nrClonesAmazonToStartOnStartup = nrClonesAmazonToStartOnStartup;
+  public void setVMMPort(int port) {
+    this.vmmPort = port;
   }
 
   /**
@@ -574,10 +471,35 @@ public class Configuration {
   }
 
   public void printConfigFile() {
-    System.out.println(setupType);
-    System.out.println(nrClonesVBToStartOnStartup);
-    System.out.println(nrClonesAmazonToStartOnStartup);
     System.out.println(clonePort);
     System.out.println(sslClonePort);
   }
+
+/**
+ * @return the slamIp
+ */
+public String getSlamIp() {
+	return slamIp;
+}
+
+/**
+ * @param slamIp the slamIp to set
+ */
+public void setSlamIp(String slamIp) {
+	this.slamIp = slamIp;
+}
+
+/**
+ * @return the slamPort
+ */
+public int getSlamPort() {
+	return slamPort;
+}
+
+/**
+ * @param slamPort the slamPort to set
+ */
+public void setSlamPort(int slamPort) {
+	this.slamPort = slamPort;
+}
 }

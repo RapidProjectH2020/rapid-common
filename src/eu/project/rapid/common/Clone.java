@@ -27,13 +27,12 @@ public class Clone implements Serializable {
   private static final long serialVersionUID = -6097868122333778588L;
 
   private int id = -1;
-  private String name; // Especially useful for VirtualBox clones, the name is used to
-                       // start/pause/stop the clones
+  private String name;
   private String ip;
   private CloneState status;
   private int clonePortBandwidthTest = 4321;
-  private int port = Configuration.DEFAULT_CLONE_PORT;
-  private int sslPort = Configuration.DEFAULT_SSL_CLONE_PORT;
+  private int port = RapidConstants.DEFAULT_VM_PORT;
+  private int sslPort = RapidConstants.DEFAULT_VM_PORT_SSL;
   private CloneType type;
   private PublicKey publicKey;
   private boolean cryptoPossible = false;
@@ -53,11 +52,11 @@ public class Clone implements Serializable {
   }
 
   public Clone(String name, String ip) {
-    this(name, ip, Configuration.DEFAULT_CLONE_PORT);
+    this(name, ip, RapidConstants.DEFAULT_VM_PORT);
   }
 
   public Clone(String name, String ip, int port) {
-    this(name, ip, port, Configuration.DEFAULT_SSL_CLONE_PORT);
+    this(name, ip, port, RapidConstants.DEFAULT_VM_PORT_SSL);
   }
 
   public Clone(String name, String ip, int port, int sslPort) {

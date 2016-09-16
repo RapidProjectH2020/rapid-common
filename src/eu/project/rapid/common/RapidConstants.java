@@ -28,15 +28,23 @@ public class RapidConstants {
   public static final int LOCATION_DYNAMIC_ENERGY = 5;
   public static final int LOCATION_DYNAMIC_TIME_ENERGY = 6;
 
+  // Default ports to be used by the different components
+  public static final int DEFAULT_VM_PORT = 4322;
+  public static final int DEFAULT_VM_PORT_SSL = 5322;
+  public static final int DEFAULT_DS_PORT = 4319;
+  public static final int DEFAULT_VMM_PORT = 4320;
+  public static final int DEFAULT_SLAM_PORT = -1;
+  public static final int DEFAULT_BANDWIDTH_PORT = 4321;
+  public static final int DEFAULT_ANIMATION_SERVER_PORT = 6666;
+  public static final int DEFAULT_GVIRTUS_PORT = 9992;
+  public static final int REGISTER_WITH_QOS_PARAMS = 1;
+  public static final int REGISTER_WITHOUT_QOS_PARAMS = 0;
+
   // TODO: check the real device name as returned by android for the HTC G1 phone
   public static final String PHONE_NAME_HTC_G1 = "HTC G1";
   public static final String PHONE_MODEL_HTC_DESIRE = "HTC Desire";
   public static final String PHONE_MODEL_SAMSUNG_GALAXY_S = "samsung GT-I9000";
   public static final String PHONE_MODEL_MOTOROLA_MOTO_G = "Motorola Moto G";
-
-  public enum SETUP_TYPE {
-    KVM, VIRTUALBOX, AMAZON, HYBRID
-  }
 
   // The constants of the configuration files
   public static final String DEMO_SERVER_IP = "[DEMO SERVER IP]";
@@ -72,5 +80,4 @@ public class RapidConstants {
   public static enum REGIME {
     AC, AS
   }
-
 }
