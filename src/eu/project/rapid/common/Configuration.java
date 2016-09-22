@@ -41,11 +41,11 @@ public class Configuration {
 
   private String animationServerIp;
   private int animationServerPort = RapidConstants.DEFAULT_ANIMATION_SERVER_PORT;
-  private String dsIp;
+  private String dsIp = RapidConstants.DEFAULT_DS_IP;
   private int dsPort = RapidConstants.DEFAULT_DS_PORT;
   private String slamIp;
   private int slamPort = RapidConstants.DEFAULT_SLAM_PORT;
-  private String vmmIp = "127.0.0.1";
+  private String vmmIp = RapidConstants.DEFAULT_VMM_IP;
   private int vmmPort = RapidConstants.DEFAULT_VMM_PORT;
   private Clone clone;
   private int clonePort = RapidConstants.DEFAULT_VM_PORT;
@@ -250,7 +250,7 @@ public class Configuration {
     this.dsPort = dsPort;
   }
 
-  public String getVMMIp() {
+  public String getVmmIp() {
     return vmmIp;
   }
 
@@ -261,7 +261,7 @@ public class Configuration {
   /**
    * @return the port
    */
-  public int getVMMPort() {
+  public int getVmmPort() {
     return vmmPort;
   }
 

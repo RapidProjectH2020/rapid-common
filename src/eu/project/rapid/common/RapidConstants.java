@@ -31,12 +31,15 @@ public class RapidConstants {
   // Default ports to be used by the different components
   public static final int DEFAULT_VM_PORT = 4322;
   public static final int DEFAULT_VM_PORT_SSL = 5322;
-  public static final int DEFAULT_DS_PORT = 4319;
-  public static final int DEFAULT_VMM_PORT = 4320;
-  public static final int DEFAULT_SLAM_PORT = -1;
+  public static final String DEFAULT_DS_IP = "83.235.169.221";
+  public static final int DEFAULT_DS_PORT = 9001;
+  public static final String DEFAULT_VMM_IP = "83.235.169.221";
+  public static final int DEFAULT_VMM_PORT = 9000;
+  public static final int DEFAULT_SLAM_PORT = 9002;
   public static final int DEFAULT_BANDWIDTH_PORT = 4321;
   public static final int DEFAULT_ANIMATION_SERVER_PORT = 6666;
   public static final int DEFAULT_GVIRTUS_PORT = 9992;
+  public static final int AC_RM_PORT_DEFAULT = 6543;
   public static final int REGISTER_WITH_QOS_PARAMS = 1;
   public static final int REGISTER_WITHOUT_QOS_PARAMS = 0;
 
