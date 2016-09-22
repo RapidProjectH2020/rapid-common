@@ -70,6 +70,12 @@ public class RapidMessages {
   public static final int PARALLEL_START = 55;
   public static final int PARALLEL_END = 56;
 
+  // Demo server registers with the DS so that the others can find its IP
+  public static final int DEMO_SERVER_REGISTER_DS = 80;
+  
+  //  Everyone to DS for asking for demo animation ip
+  public static final int GET_DEMO_SERVER_IP_DS = 81;
+
   // Communication SLAM <-> VMM
   public static final int SLAM_START_VM_VMM = 60;
 

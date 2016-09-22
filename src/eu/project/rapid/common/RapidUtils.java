@@ -316,4 +316,36 @@ public class RapidUtils {
 		return localIpAddress;
 
 	}
+	
+	/**
+	 * Connects to the DS and returns the IP of the demo animation server.
+	 * @param dsIp
+	 * @param dsPort
+	 * @return IP of the demo animation server or null.
+	 */
+	public static String getDemoAnimationServerIpFromDs(String dsIp, int dsPort) {
+		String ip = null;
+		Socket socket = null;
+		ObjectOutputStream oos = null;
+		ObjectInputStream ois = null;
+		try {
+			socket = new Socket(dsIp, dsPort);
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			ois = new ObjectInputStream(socket.getInputStream());
+			
+			oos.writeByte(RapidMessages.GET_DEMO_SERVER_IP_DS);
+			oos.flush();
+			ip = ois.readUTF();
+		} catch (UnknownHostException e) {
+			System.err.println("Could not connect to DS for getting demo server IP: " + e);
+		} catch (IOException e) {
+			System.err.println("Could not connect to DS for getting demo server IP: " + e);
+		} finally {
+			closeQuietly(ois);
+			closeQuietly(oos);
+			closeQuietly(socket);
+		}
+		
+		return ip;
+	}
 }
