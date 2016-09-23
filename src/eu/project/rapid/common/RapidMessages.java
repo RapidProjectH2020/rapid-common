@@ -92,15 +92,9 @@ public class RapidMessages {
 
   // Messages to send to the demo server, which will create the animation
   // of the events happening on the system
-  public static final String DS_UP = "DS_UP";
 
   // The VMM is started, registers with the DS and starts two VMs
-  public static final String VMM_UP = "VMM_UP";
-  public static final String VMM_REGISTER_DS_MSG =
-      "VMM_REGISTER_DS"; /*
-                          * name is changed from VMM_REGISTER_DS to VMM_REGISTER_DS_MSG to avoid
-                          * name conflict
-                          */
+
   public static final String VMM_REGISTER_DS_OK = "VMM_REGISTER_DS_OK";
   public static final String VMM_START_TWO_VMS = "VMM_START_TWO_VMS";
   public static final String VMM_VM1_STARTED = "VMM_VM1_STARTED";
@@ -131,10 +125,9 @@ public class RapidMessages {
   public static final String AC_REGISTER_VM = "AC_REGISTER_VM";
   public static final String AC_CONNECT_VM = "AC_CONNECT_VM";
   public static final String AC_SEND_APK = "AC_SEND_APK";
-  public static final String AC_RTT_MEASUREMENT = "AC_RTT_MEASUREMENT";
-  public static final String AC_DL_MEASUREMENT = "AC_DW_MEASUREMENT";
-  public static final String AC_UL_MEASUREMENT = "AC_UW_MEASUREMENT";
-  public static final String AC_REGISTER_VM_OK = "AC_REGISTER_VM_OK";
+
+
+
   public static final String AC_DISCONNECT_VM = "AC_DISCONNECT_VM";
 
   // The method is run locally
@@ -150,4 +143,31 @@ public class RapidMessages {
   public static final String AC_RESULT_REMOTE = "AC_RESULT_REMOTE";
   public static final String AC_FINISHED_REMOTE = "AC_FINISHED_REMOTE";
 
+  //new commands for Demo
+  public static final String INITIAL_IMG_0 = "INITIAL_IMG_0";//image id 1
+  public static final String DS_UP = "DS_UP";                //image id 2
+  public static final String SLAM_UP = "SLAM_UP";            //image id 3
+  public static final String SLAM_REGISTER_DS = "SLAM_REGISTER_DS"; //image id 4
+  public static final String VMM_UP = "VMM_UP"; //image id 5
+  public static final String VMM_REGISTER_DS_MSG = "VMM_REGISTER_DS_MSG"; //image id 6
+  public static final String VMM_REGISTER_SLAM = "VMM_REGISTER_SLAM"; //image id 7
+  //
+  public static final String AC_INITIAL_IMG = "AC_INITIAL_IMG";//image id 8
+  public static final String AC_REGISTER_DS_MSG = "AC_REGISTER_DS_MSG";//image id 9
+  public static final String DS_FIND_MACHINES = "DS_FIND_MACHINES";//image id 10
+  public static final String DS_IP_LIST_AC =  "DS_IP_LIST_AC";//image id 11
+  public static final String AC_REGISTER_SLAM_MSG = "AC_REGISTER_SLAM_MSG";//image id 12
+  public static final String SLAM_NEW_VM_VMM = "SLAM_NEW_VM_VMM"; //image id 13
+  public static final String VMM_START_VM = "VMM_START_VM";//image id 14
+  public static final String VMM_START_AS_REGISTER_DS = "VMM_START_AS_REGISTER_DS";//image id 15
+  public static final String VM_REGISTER_DS_MSG = "VM_REGISTER_DS_MSG";//image id 16
+  public static final String VMM_NEW_VM_IP_SLAM  = "VMM_NEW_VM_IP_SLAM";//image id 17
+  public static final String SLAM_NEW_VM_IP_AC = "SLAM_NEW_VM_IP_AC";//image id 18
+  public static final String AC_REGISTER_UD_VM = "AC_REGISTER_UD_VM";//image id 19
+  public static final String CONNECTION_OK = "CONNECTION_OK";//image id 20
+  public static final String APK_REGISTER_VM = "APK_REGISTER_VM";//image id 21
+  public static final String AC_RTT_MEASUREMENT = "AC_RTT_MEASUREMENT";//image id 22
+  public static final String AC_DL_MEASUREMENT = "AC_DL_MEASUREMENT";//image id 23
+  public static final String AC_UL_MEASUREMENT = "AC_UL_MEASUREMENT";//image id 24
+  public static final String AC_REGISTER_VM_OK = "AC_REGISTER_VM_OK";//image id 25
 }
