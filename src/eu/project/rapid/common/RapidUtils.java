@@ -39,6 +39,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.regex.Pattern;
 
+import eu.project.rapid.common.RapidMessages.AnimationMsg;
+
 /**
  * These are some utilities to be used on the Rapid project.
  * In particular, some important functions are used by the AS and AC.  
@@ -177,6 +179,10 @@ public class RapidUtils {
 	 */
 	public static synchronized void sendAnimationMsg(Configuration config, String msg) {
 		sendAnimationMsg(config.getAnimationServerIp(), config.getAnimationServerPort(), msg);
+	}
+	
+	public static synchronized void sendAnimationMsg(Configuration config, AnimationMsg msg) {
+		sendAnimationMsg(config.getAnimationServerIp(), config.getAnimationServerPort(), msg.toString());
 	}
 
 	/**
