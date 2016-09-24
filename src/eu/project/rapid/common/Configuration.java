@@ -40,7 +40,7 @@ public class Configuration {
   private Scanner configFileScanner;
 
   private String animationServerIp;
-  private int animationServerPort = RapidConstants.DEFAULT_ANIMATION_SERVER_PORT;
+  private int animationServerPort = RapidConstants.DEFAULT_PRIMARY_ANIMATION_SERVER_PORT;
   private String dsIp = RapidConstants.DEFAULT_DS_IP;
   private int dsPort = RapidConstants.DEFAULT_DS_PORT;
   private String slamIp;
