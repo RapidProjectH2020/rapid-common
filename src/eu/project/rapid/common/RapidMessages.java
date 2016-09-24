@@ -93,6 +93,8 @@ public class RapidMessages {
 	// Messages to send to the demo server, which will create the animation
 	// of the events happening on the system
 	public enum AnimationMsg {
+		
+		PING,
 
 		// Scenario 1: DS, SLAM, VMM starting up
 		INITIAL_IMG_0,
