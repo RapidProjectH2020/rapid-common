@@ -55,7 +55,7 @@ public class RapidUtils {
 					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
 					"([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
 	
-	private static boolean demoAnimate = false;
+	private static boolean demoAnimate = true;
 
 	private static final Thread demoServerThread;
 	private static BlockingQueue<String> commandQueue = new ArrayBlockingQueue<String>(1000);
