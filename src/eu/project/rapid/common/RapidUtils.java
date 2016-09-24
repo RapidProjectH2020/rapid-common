@@ -267,12 +267,6 @@ public class RapidUtils {
 			pout = new PrintWriter(socket.getOutputStream(), true);
 			pout.print(msg);
 
-		} catch (UnknownHostException e) {
-			System.err.println("Could not connect to animation server: " + demoServerIp + ":"
-					+ demoServerPort + ": " + e);
-		} catch (IOException e) {
-			System.err.println("Could not connect to animation server: " + demoServerIp + ":"
-					+ demoServerPort + ": " + e);
 		} catch (Exception e) {
 			System.err.println("Could not connect to animation server: " + demoServerIp + ":"
 					+ demoServerPort + ": " + e);
@@ -342,9 +336,7 @@ public class RapidUtils {
 			oos.writeByte(RapidMessages.GET_DEMO_SERVER_IP_DS);
 			oos.flush();
 			ip = ois.readUTF();
-		} catch (UnknownHostException e) {
-			System.err.println("Could not connect to DS for getting demo server IP: " + e);
-		} catch (IOException e) {
+		}catch (IOException e) {
 			System.err.println("Could not connect to DS for getting demo server IP: " + e);
 		} finally {
 			closeQuietly(ois);
