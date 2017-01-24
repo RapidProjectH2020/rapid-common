@@ -133,6 +133,7 @@ public class RapidMessages {
 		AC_PREV_APK_VM,
 		AC_PREV_CONN_VM,
 		AC_PREV_REGISTER_VM,
+		AC_REGISTER_VM_ERROR,
 		SLAM_PREV_VM_IP_AC,
 		VMM_PREV_VM_IP_SLAM,
 		VMM_PREV_FIND_VM,
@@ -169,6 +170,7 @@ public class RapidMessages {
 		//Scenario 7: D2D 2
 		
 		AC_RECEIVED_D2D,
+		AC_NO_MORE_D2D,
 		AS_BROADCASTING_D2D,
 		AC_LISTENING_D2D,
 		D2D_INITIAL_IMG,

@@ -262,7 +262,8 @@ public class RapidUtils {
 		PrintWriter pout = null;
 
 		try {
-			System.out.println(TAG + " - Sending animation msg: " + msg);
+			System.out.println(TAG + " - Sending animation msg: " + msg + " to " + demoServerIp + ":"
+					+ demoServerPort);
 			socket = new Socket(demoServerIp, demoServerPort);
 			pout = new PrintWriter(socket.getOutputStream(), true);
 			pout.print(msg);
@@ -276,6 +277,28 @@ public class RapidUtils {
 			}
 			closeQuietly(socket);
 		}
+	}
+	
+	public static boolean isPrimaryAnimationServerRunning(String ip, int port) {
+		Socket socket = null;
+		PrintWriter pout = null;
+
+		try {
+			System.out.println(TAG + " - Connecting with primary server " + ip + ":" + port);
+			socket = new Socket(ip, port);
+			pout = new PrintWriter(socket.getOutputStream(), true);
+			pout.print(AnimationMsg.PING);
+			return true;
+		} catch (Exception e) {
+			System.err.println("Could not connect to animation server: " + ip + ":"
+					+ port + ": " + e);
+		} finally {
+			if (pout != null) {
+				pout.close();
+			}
+			closeQuietly(socket);
+		}
+		return false;
 	}
 
 	/**
