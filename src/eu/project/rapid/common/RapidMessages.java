@@ -78,6 +78,8 @@ public class RapidMessages {
 
 	// Communication SLAM <-> VMM
 	public static final int SLAM_START_VM_VMM = 60;
+	public static final int VMM_REGISTER_SLAM = 61;
+	public static final int SLAM_GET_VMCPU_VMM = 62;
 
 	// Communication DS <-> VMM
 	public static final int VMM_REGISTER_DS = 70;
@@ -86,6 +88,9 @@ public class RapidMessages {
 	public static final int VM_NOTIFY_DS = 73;
 	public static final int HELPER_NOTIFY_DS = 74;
 	public static final int DS_VM_DEREGISTER_VMM = 75;
+	
+	// Communication DS <-> SLAM
+	public static final int SLAM_REGISTER_DS = 90;
 
 	// Communication Phone <-> Registration Manager
 	public static final int AC_HELLO_AC_RM = 1;
