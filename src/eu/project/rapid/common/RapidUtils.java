@@ -269,8 +269,8 @@ public class RapidUtils {
 			pout.print(msg);
 
 		} catch (Exception e) {
-			System.err.println("Could not connect to animation server: " + demoServerIp + ":"
-					+ demoServerPort + ": " + e);
+//			System.err.println("Could not connect to animation server: " + demoServerIp + ":"
+//					+ demoServerPort + ": " + e);
 		} finally {
 			if (pout != null) {
 				pout.close();
@@ -290,8 +290,8 @@ public class RapidUtils {
 			pout.print(AnimationMsg.PING);
 			return true;
 		} catch (Exception e) {
-			System.err.println("Could not connect to animation server: " + ip + ":"
-					+ port + ": " + e);
+//			System.err.println("Could not connect to animation server: " + ip + ":"
+//					+ port + ": " + e);
 		} finally {
 			if (pout != null) {
 				pout.close();
