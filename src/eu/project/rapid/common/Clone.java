@@ -87,8 +87,8 @@ public class Clone implements Serializable {
     else if (name.startsWith("kvm-"))
       return CloneType.KVM;
     else {
-      System.err.println("The type of this clone could not be determined");
-      printInfoAboutCloneName();
+//      System.err.println("The type of this clone could not be determined");
+//      printInfoAboutCloneName();
       return CloneType.UNKNOWN;
     }
   }
