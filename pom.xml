@@ -1,19 +1,32 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Rapid-Common</groupId>
-  <artifactId>Rapid-Common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>eu.project.rapid</groupId>
+	<artifactId>rapid-common</artifactId>
+	<version>0.0.1</version>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<!-- <repository> <id>bintray-gjigandi-rapid</id> <name>gjigandi-rapid</name> 
+			<url>https://api.bintray.com/maven/gjigandi/rapid/rapid-common/;publish=1;override=1</url> 
+			</repository> -->
+		<repository>
+			<id>bintray-rapidprojecth2020-rapid</id>
+			<name>rapidprojecth2020-rapid</name>
+			<url>https://api.bintray.com/maven/rapidprojecth2020/rapid/rapid-common/;publish=1;override=1</url>
+		</repository>
+	</distributionManagement>
+
 </project>
