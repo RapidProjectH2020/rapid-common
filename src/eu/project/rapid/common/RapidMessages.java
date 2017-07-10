@@ -26,22 +26,22 @@ public class RapidMessages {
 	public static final int PING = 11;
 	public static final int PONG = 12;
 
-	// Communication Phone <-> Clone
+	// Communication Phone <-> VM
 	public static final int AC_REGISTER_AS = 13;
 	public static final int AS_APP_PRESENT_AC = 14;
 	public static final int AS_APP_REQ_AC = 15;
 	public static final int AC_OFFLOAD_REQ_AS = 16;
 
-	// Communication Phone <-> Clone (for testing purposes)
+	// Communication Phone <-> VM (for testing purposes)
 	public static final int SEND_INT = 17;
 	public static final int SEND_BYTES = 18;
 	public static final int RECEIVE_INT = 19;
 	public static final int RECEIVE_BYTES = 20;
 
-	// Communication Main Clone <-> Helper Clone
+	// Communication Main VM <-> Helper VM
 	public static final int CLONE_ID_SEND = 21;
 
-	// Communication Phone/Clone <-> DS/Manager
+	// Communication Phone/VM <-> DS/Manager
 	public static final int PHONE_CONNECTION = 30;
 	public static final int CLONE_CONNECTION = 31;
 	public static final int MANAGER_CONNECTION = 32;
@@ -69,6 +69,8 @@ public class RapidMessages {
 	public static final int PARALLEL_REQ = 54;
 	public static final int PARALLEL_START = 55;
 	public static final int PARALLEL_END = 56;
+	public static final int AS_RM_MIGRATION_VM = 57;
+
 
 	// Demo server registers with the DS so that the others can find its IP
 	public static final int DEMO_SERVER_REGISTER_DS = 80;
