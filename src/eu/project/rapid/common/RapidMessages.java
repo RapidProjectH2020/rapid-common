@@ -69,7 +69,7 @@ public class RapidMessages {
 	public static final int PARALLEL_REQ = 54;
 	public static final int PARALLEL_START = 55;
 	public static final int PARALLEL_END = 56;
-	public static final int AS_RM_MIGRATION_VM = 57;
+	public static final int DS_MIGRATION_VM_AS = 57;
 
 
 	// Demo server registers with the DS so that the others can find its IP
