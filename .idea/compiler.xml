@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Rapid-Common" />
+        <module name="rapid-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Rapid-Common" target="1.7" />
+      <module name="rapid-common" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
