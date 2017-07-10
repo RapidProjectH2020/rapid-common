@@ -157,7 +157,7 @@ public class Clone implements Serializable {
   }
 
   /**
-   * @param portForPhone the portForPhone to set
+   * @param port the portForPhone to set
    */
   public void setPort(int port) {
     this.port = port;
@@ -171,7 +171,7 @@ public class Clone implements Serializable {
   }
 
   /**
-   * @param sslPortForPhone the sslPortForPhone to set
+   * @param sslPort the sslPortForPhone to set
    */
   public void setSslPort(int sslPort) {
     this.sslPort = sslPort;
