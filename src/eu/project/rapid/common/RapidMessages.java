@@ -85,6 +85,9 @@ public class RapidMessages {
 	public static final int SLAM_GET_VMINFO_VMM = 63;
 	public static final int SLAM_CHANGE_VMFLV_VMM = 64;
 	public static final int SLAM_CONFIRM_VMFLV_VMM = 65;
+	public static final int SLAM_GET_VMMEM_VMM = 66;
+	public static final int SLAM_GET_VMDISK_VMM = 67;
+	
 
 	// Communication DS <-> VMM
 	public static final int VMM_REGISTER_DS = 70;
