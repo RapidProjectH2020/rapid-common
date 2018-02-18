@@ -171,14 +171,17 @@ public class RapidUtils {
                 msg.toString());
     }
 
+    public static synchronized void sendAnimationMsg(final String ip, final int port, final AnimationMsg msg) {
+        sendAnimationMsg(ip, port, msg.toString());
+    }
+
     /**
      * Connect to the animation server and send the messages that represent the sequence of
      * operations.
      *
      * @param msg
      */
-    public static synchronized void sendAnimationMsg(final String ip, final int port,
-                                                     final String msg) {
+    private static synchronized void sendAnimationMsg(final String ip, final int port, final String msg) {
 
         if (demoAnimate) {
             RapidUtils.demoServerIp = ip;
@@ -308,7 +311,7 @@ public class RapidUtils {
                 boolean stop = false;
                 while (ee.hasMoreElements()) {
                     InetAddress i = (InetAddress) ee.nextElement();
-                    if (i.getHostAddress().startsWith("10.0.")) {
+                    if (i.getHostAddress().startsWith("192.168.")) {
                         localIpAddress = i.getHostAddress();
                         stop = true;
                         break;

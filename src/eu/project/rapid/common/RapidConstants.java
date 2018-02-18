@@ -29,7 +29,8 @@ public class RapidConstants {
     public static final int LOCATION_DYNAMIC_TIME_ENERGY = 6;
 
     // Default ports to be used by the different components
-    public static final String DEFAULT_SILO_SERVER_IP = "83.235.169.221";
+    // public static final String DEFAULT_SILO_SERVER_IP = "83.235.169.221"; // SILO cloud
+    public static final String DEFAULT_SILO_SERVER_IP = "80.158.18.98"; // OTC cloud
     public static final int DEFAULT_VM_PORT = 4322;
     public static final int DEFAULT_VM_PORT_SSL = 5322;
     public static final String DEFAULT_DS_IP = DEFAULT_SILO_SERVER_IP;
@@ -41,11 +42,11 @@ public class RapidConstants {
     // public static final String DEFAULT_PRIMARY_ANIMATION_SERVER_IP = "192.168.0.212";
     public static final String DEFAULT_PRIMARY_ANIMATION_SERVER_IP = DEFAULT_SILO_SERVER_IP;
     public static final int DEFAULT_PRIMARY_ANIMATION_SERVER_PORT = 6666;
-    public static final String DEFAULT_SECONDARY_ANIMATION_SERVER_IP = "192.168.0.3"; // FIXME put the
-    // IP of the
-    // macbook
-    // machine here
+
+    // FIXME put the IP of the macbook machine here
+    public static final String DEFAULT_SECONDARY_ANIMATION_SERVER_IP = "192.168.0.3";
     public static final int DEFAULT_SECONDARY_ANIMATION_SERVER_PORT = 6665;
+
     public static final int DEFAULT_GVIRTUS_PORT = 9992;
     public static final int AC_RM_PORT_DEFAULT = 6543;
     public static final int REGISTER_WITH_QOS_PARAMS = 1;

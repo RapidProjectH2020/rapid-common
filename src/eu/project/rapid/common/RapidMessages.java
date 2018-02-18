@@ -19,6 +19,7 @@ package eu.project.rapid.common;
  * Control Messages for client-server communication Message IDs up to 255 - one byte only, as they
  * are sent over sockets using write()/read() - only one byte read/written.
  */
+@SuppressWarnings("unused")
 public class RapidMessages {
 	// Generic Messages
 	public static final int OK = 1;
@@ -105,6 +106,7 @@ public class RapidMessages {
 
 	// Messages to send to the demo server, which will create the animation
 	// of the events happening on the system
+	@SuppressWarnings("unused")
 	public enum AnimationMsg {
 		
 		PING,
@@ -166,14 +168,12 @@ public class RapidMessages {
 		//	AC_INITIAL_IMG,
 
 		//	Scenario 5: local execution
-
 		AC_LOCAL_FINISHED,
 		AC_DECISION_LOCAL,
 		//AC_PREPARE_DATA,
 		//AC_INITIAL_IMG,
 		
 		// Scenario 6: D2D 1
-
 		AC_OFFLOADING_FINISHED_D2D,
 		AS_RESULT_AC_D2D,
 		AS_RUN_METHOD_D2D,
@@ -181,7 +181,6 @@ public class RapidMessages {
 		AC_PREPARE_DATA_D2D,
 		
 		//Scenario 7: D2D 2
-		
 		AC_RECEIVED_D2D,
 		AC_NO_MORE_D2D,
 		AS_BROADCASTING_D2D,
