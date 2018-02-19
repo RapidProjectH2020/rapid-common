@@ -119,8 +119,9 @@ public class RapidMessages {
 		VMM_UP,
 		VMM_REGISTER_DS,
 		VMM_REGISTER_SLAM,
+		VMM_START_VM_HELPERS,
 
-		// Scenario 2: 
+		// Scenario 2: AC registers and asks NEW VM
 		AC_INITIAL_IMG,
 		AC_NEW_REGISTER_DS,
 		DS_NEW_FIND_MACHINES,
@@ -140,7 +141,7 @@ public class RapidMessages {
 		AC_NEW_UL_RATE_VM,
 		AC_NEW_REGISTRATION_OK_VM,
 
-		// Scenario 3: 
+		// Scenario 3: AC registers and asks PREV VM
 		AC_PREV_REGISTRATION_OK_VM,
 		AC_PREV_UL_RATE_VM,
 		AC_PREV_DL_RATE_VM,
@@ -159,32 +160,60 @@ public class RapidMessages {
 		AC_PREV_VM_DS,
 		//	AC_INITIAL_IMG
 
-		// Scenario 4: offload execution
+        //	Scenario 4: local execution
+        AC_LOCAL_FINISHED,
+        AC_DECISION_LOCAL,
+        //AC_PREPARE_DATA,
+        //AC_INITIAL_IMG,
+
+		// Scenario 5: offload execution
 		AC_OFFLOADING_FINISHED,
 		AS_RESULT_AC,
 		AS_RUN_METHOD,
 		AC_DECISION_OFFLOAD_AS,
 		AC_PREPARE_DATA,
-		//	AC_INITIAL_IMG,
 
-		//	Scenario 5: local execution
-		AC_LOCAL_FINISHED,
-		AC_DECISION_LOCAL,
-		//AC_PREPARE_DATA,
-		//AC_INITIAL_IMG,
-		
-		// Scenario 6: D2D 1
+        // Scenario 6: Parallel offload execution
+        // AC_PREPARE_DATA
+        AC_DECISION_OFFLOAD_2VMs_AS,
+        AS_PARALLEL_REQ_DS,
+        DS_VM_HELPER_IP_AS,
+        AS_SEND_METHOD_VM_HELPER,
+        AS_RUN_METHOD_PARALLEL,
+        AS_COMBINE_PARALLEL_RESULTS,
+        AS_RESULT_PARALLEL_AC,
+        AC_OFFLOADING_FINISHED_PARALLEL,
+
+        // Scenario 7: CUDA local offload
+        // GVFE - GVirtuS Frontend
+        // GVBE - GVirtuS Backend
+        // AC_PREPARE_DATA
+        GVFE_LOCAL_OFFLOAD_GVBE,
+        GVBE_LOCAL_RUN_CUDA,      // this needs to be sent by the backend, but we will send it from the matrixmul
+        GVBE_RESULT_GVFE,         // this needs to be sent by the backend, but we will send it from the matrixmul
+        AC_LOCAL_CUDA_FINISHED,
+
+        // Scenario 8: CUDA remote offload
+        // AC_PREPARE_DATA
+        // AC_DECISION_OFFLOAD_AS,
+        // AS_RUN_METHOD,
+        GVBE_REMOTE_RUN_CUDA,       // this needs to be sent by the backend, but we will send it from the matrixmul
+        AS_REMOTE_CUDA_RESULT_AC,
+        AC_REMOTE_CUDA_FINISHED,
+
+        //	AC_INITIAL_IMG,
+		// Scenario 9: D2D 1
 		AC_OFFLOADING_FINISHED_D2D,
 		AS_RESULT_AC_D2D,
 		AS_RUN_METHOD_D2D,
 		AC_OFFLOAD_D2D,
-		AC_PREPARE_DATA_D2D,
+//		AC_PREPARE_DATA,
 		
-		//Scenario 7: D2D 2
+		//Scenario 10: D2D 2
 		AC_RECEIVED_D2D,
-		AC_NO_MORE_D2D,
+//		AC_NO_MORE_D2D,
 		AS_BROADCASTING_D2D,
 		AC_LISTENING_D2D,
-		D2D_INITIAL_IMG,
+//		D2D_INITIAL_IMG,
 	}
 }
