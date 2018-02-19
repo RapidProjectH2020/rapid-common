@@ -15,16 +15,12 @@
  *******************************************************************************/
 package eu.project.rapid.common;
 
-import eu.project.rapid.common.RapidMessages.AnimationMsg;
-
 import java.io.*;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.Enumeration;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,32 +36,6 @@ public class RapidUtils {
     private static final String IPADDRESS_PATTERN =
             "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
                     + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
-
-    private static boolean demoAnimate = true;
-
-    private static final Thread demoServerThread;
-    private static BlockingQueue<String> commandQueue = new ArrayBlockingQueue<String>(1000);
-    private static String demoServerIp;
-    private static int demoServerPort;
-
-    static {
-        demoServerThread = new Thread() {
-            public void run() {
-
-                System.out.println("Started thread that consumes the commands to send to the Demo server");
-
-                while (true) {
-                    try {
-                        String cmd = commandQueue.take();
-                        sendAnimationMsg(cmd);
-                    } catch (InterruptedException e) {
-                    }
-                }
-            }
-        };
-
-        demoServerThread.start();
-    }
 
     /**
      * Utility to execute a shell command on a Mac OS.
@@ -155,49 +125,6 @@ public class RapidUtils {
         return obj;
     }
 
-    /**
-     * Connect to the animation server and send the messages that represent the sequence of
-     * operations.
-     *
-     * @param config
-     * @param msg
-     */
-    public static synchronized void sendAnimationMsg(Configuration config, String msg) {
-        sendAnimationMsg(config.getAnimationServerIp(), config.getAnimationServerPort(), msg);
-    }
-
-    public static synchronized void sendAnimationMsg(Configuration config, AnimationMsg msg) {
-        sendAnimationMsg(config.getAnimationServerIp(), config.getAnimationServerPort(),
-                msg.toString());
-    }
-
-    public static synchronized void sendAnimationMsg(final String ip, final int port, final AnimationMsg msg) {
-        sendAnimationMsg(ip, port, msg.toString());
-    }
-
-    /**
-     * Connect to the animation server and send the messages that represent the sequence of
-     * operations.
-     *
-     * @param msg
-     */
-    private static synchronized void sendAnimationMsg(final String ip, final int port, final String msg) {
-
-        if (demoAnimate) {
-            RapidUtils.demoServerIp = ip;
-            RapidUtils.demoServerPort = port;
-
-            boolean added = false;
-            while (!added) {
-                try {
-                    commandQueue.put(msg);
-                    added = true;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 
     public static void closeQuietly(InputStream is) {
         if (is != null) {
@@ -242,50 +169,6 @@ public class RapidUtils {
             } catch (IOException e) {
             }
         }
-    }
-
-    private static void sendAnimationMsg(String msg) {
-        Socket socket = null;
-        PrintWriter pout = null;
-
-        try {
-            System.out.println(
-                    TAG + " - Sending animation msg: " + msg + " to " + demoServerIp + ":" + demoServerPort);
-            socket = new Socket(demoServerIp, demoServerPort);
-            pout = new PrintWriter(socket.getOutputStream(), true);
-            pout.print(msg);
-
-        } catch (Exception e) {
-            // System.err.println("Could not connect to animation server: " + demoServerIp + ":"
-            // + demoServerPort + ": " + e);
-        } finally {
-            if (pout != null) {
-                pout.close();
-            }
-            closeQuietly(socket);
-        }
-    }
-
-    public static boolean isPrimaryAnimationServerRunning(String ip, int port) {
-        Socket socket = null;
-        PrintWriter pout = null;
-
-        try {
-            System.out.println(TAG + " - Connecting with primary server " + ip + ":" + port);
-            socket = new Socket(ip, port);
-            pout = new PrintWriter(socket.getOutputStream(), true);
-            pout.print(AnimationMsg.PING);
-            return true;
-        } catch (Exception e) {
-            // System.err.println("Could not connect to animation server: " + ip + ":"
-            // + port + ": " + e);
-        } finally {
-            if (pout != null) {
-                pout.close();
-            }
-            closeQuietly(socket);
-        }
-        return false;
     }
 
     /**
