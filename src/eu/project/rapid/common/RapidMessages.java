@@ -211,7 +211,7 @@ public class RapidMessages {
 		
 		//Scenario 10: D2D 2
 		AC_RECEIVED_D2D,
-//		AC_NO_MORE_D2D,
+		AC_NO_MORE_D2D,
 		AS_BROADCASTING_D2D,
 		AC_LISTENING_D2D,
 //		D2D_INITIAL_IMG,

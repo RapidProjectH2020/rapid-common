@@ -57,7 +57,7 @@ public class AnimationMsgSender {
      *
      * @param msg
      */
-    public static synchronized void sendAnimationMsg(final AnimationMsg msg) {
+    public synchronized void sendAnimationMsg(final AnimationMsg msg) {
 
         if (demoAnimate) {
             boolean added = false;
