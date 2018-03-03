@@ -110,6 +110,11 @@ public class RapidMessages {
 	public enum AnimationMsg {
 		
 		PING,
+		AC_COMM_CLEAR,
+		AC_COMM_SSL,
+		AC_COMM_NONE,
+//        SLAM_CPU_UTIL,
+//        SLAM_MEM_UTIL,
 
 		// Scenario 1: DS, SLAM, VMM starting up
 		INITIAL_IMG_0,
@@ -120,6 +125,7 @@ public class RapidMessages {
 		VMM_REGISTER_DS,
 		VMM_REGISTER_SLAM,
 		VMM_START_VM_HELPERS,
+		VMM_BOOT_SUCCESS_ALL,
 
 		// Scenario 2: AC registers and asks NEW VM
 		AC_INITIAL_IMG,
@@ -140,8 +146,10 @@ public class RapidMessages {
 		AC_NEW_DL_RATE_VM,
 		AC_NEW_UL_RATE_VM,
 		AC_NEW_REGISTRATION_OK_VM,
+		AC_NEW_REGISTRATION_FAIL_VM, // no image for this one, just add a label on the animation image
 
 		// Scenario 3: AC registers and asks PREV VM
+		AC_PREV_REGISTRATION_FAIL_VM, // no image for this one, just add a label on the animation image
 		AC_PREV_REGISTRATION_OK_VM,
 		AC_PREV_UL_RATE_VM,
 		AC_PREV_DL_RATE_VM,
@@ -190,7 +198,7 @@ public class RapidMessages {
         // AC_PREPARE_DATA
         GVFE_LOCAL_OFFLOAD_GVBE,
         GVBE_LOCAL_RUN_CUDA,      // this needs to be sent by the backend, but we will send it from the matrixmul
-        GVBE_RESULT_GVFE,         // this needs to be sent by the backend, but we will send it from the matrixmul
+        GVBE_LOCAL_RESULT_GVFE,   // this needs to be sent by the backend, but we will send it from the matrixmul
         AC_LOCAL_CUDA_FINISHED,
 
         // Scenario 8: CUDA remote offload
@@ -198,6 +206,7 @@ public class RapidMessages {
         // AC_DECISION_OFFLOAD_AS,
         // AS_RUN_METHOD,
         GVBE_REMOTE_RUN_CUDA,       // this needs to be sent by the backend, but we will send it from the matrixmul
+        GVBE_REMOTE_RESULT_GVFE,   // this needs to be sent by the backend, but we will send it from the matrixmul
         AS_REMOTE_CUDA_RESULT_AC,
         AC_REMOTE_CUDA_FINISHED,
 

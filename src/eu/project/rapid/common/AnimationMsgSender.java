@@ -3,6 +3,7 @@ package eu.project.rapid.common;
 import eu.project.rapid.common.RapidMessages.AnimationMsg;
 
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -30,6 +31,7 @@ public class AnimationMsgSender {
                         String cmd = commandQueue.take();
                         sendAnimationMsg(cmd);
                     } catch (InterruptedException e) {
+                        System.err.println(TAG + " - " + e);
                     }
                 }
             }
@@ -80,7 +82,8 @@ public class AnimationMsgSender {
         try {
             System.out.println(
                     TAG + " - Sending animation msg: " + msg + " to " + demoServerIp + ":" + demoServerPort);
-            socket = new Socket(demoServerIp, demoServerPort);
+            socket = new Socket();
+            socket.connect(new InetSocketAddress(demoServerIp, demoServerPort), 1000);
             pout = new PrintWriter(socket.getOutputStream(), true);
             pout.print(msg);
 
